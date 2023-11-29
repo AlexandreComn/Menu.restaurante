@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cantinho do Sabor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Cantinho do Sabor</h1>
+    </header>
+
+    <div class="menu-item" id="produto1">
+        <img src="download.jpg" alt="Hamburguer">
+        <h3>Hamburguer</h3>
+        <p>Preço: R$20,90</p>
+        <button onclick="comprar('produto 1', 'Hamburguer', 'R$20,90')">Comprar</button>
+    </div>
+
+    <div class="menu-item" id="produto2">
+        <img src="caminho/para/imagem2.jpg" alt="Nome do Item 2">
+        <h3>Nome do Item 2</h3>
+        <p>Preço: R$YY,YY</p>
+        <button onclick="comprar('produto2', 'Nome do Item 2', 'R$YY,YY')">Comprar</button>
+    </div>
+
+    <!-- Adicione mais itens conforme necessário -->
+
+    <script>
+        function comprar(id, item, preco) {
+            var numeroWhatsApp = '41998665850';
+            var mensagem = encodeURIComponent('Gostaria de encomendar o lanche: ' + item + ' (ID: ' + id + ')' +
+                '\nPreço: ' + preco);
+            var urlWhatsApp = 'https://api.whatsapp.com/send?phone=' + numeroWhatsApp + '&text=' + mensagem;
+            window.open(urlWhatsApp, '_blank');
+        }
+        
+    </script>
+
+</body>
+</html>
