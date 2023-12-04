@@ -10,37 +10,157 @@
 
     <header>
         <h1>Cantinho do Sabor</h1>
+        <p>Sua experiência gastronômica única</p>
     </header>
 
-    <div class="menu-item" id="produto1">
-        <img src="download.jpg" alt="Hamburguer">
-        <h3>Hamburguer</h3>
-        <p>Preço: R$20,90</p>
-        <button onclick="comprar('produto 1', 'Hamburguer', 'R$20,90')">Comprar</button>
-    </div>
+    <nav>
+        <ul>
+            <li><a href="#hamburguers">Hamburguers</a></li>
+            <li><a href="#pasteis">Pasteis</a></li>
+            <li><a href="#bebidas">Bebidas</a></li>
+            <li><a href="#porcoes">Porções</a></li>
+            <li><a href="#milkshake">Milk Shake</a></li>
+        </ul>
+    </nav>
 
-    <div class="menu-item" id="produto2">
-        <img src="caminho/para/imagem2.jpg" alt="Nome do Item 2">
-        <h3>Nome do Item 2</h3>
-        <p>Preço: R$YY,YY</p>
-        <button onclick="comprar('produto2', 'Nome do Item 2', 'R$YY,YY')">Comprar</button>
-    </div>
+    <section id="hamburguers" class="menu-section">
+        <h2>Hamburguer bovino artesanal (150GR)</h2>
+        
+        <div class="menu">
+            <div class="menu-item" id="Hamburguer1">
+                <h3>X-burguer</h3>
+                <p>Descrição: Pão, molho, hamburguer, queijo e peito de peru.</p>
+                <p>Preço: R$20,00</p>
+                <button onclick="comprar('hamburguer1', 'X-burguer', 'R$20,00')">Comprar</button>
+            </div>
 
-    <div class="menu-item" id="produto3">
-        <img src="caminho/para/imagem2.jpg" alt="Nome do Item 3">
-        <h3>Nome do Item 2</h3>
-        <p>Preço: R$YY,YY</p>
-        <button onclick="comprar('produto3', 'Nome do Item 3', 'R$YY,YY')">Comprar</button>
-    </div>
+            <div class="menu-item" id="Hamburguer2">
+                <h3>X-salada</h3>
+                <p>Descrição: Pão, alface, tomate, , molho, hamburguer, queijo e peito de peru.</p>
+                <p>Preço: R$22,00</p>
+                <button onclick="comprar('hamburguer2', 'X-salada', 'R$22,00')">Comprar</button>
+            </div>
 
-    <div class="menu-item" id="produto4">
-        <img src="caminho/para/imagem2.jpg" alt="Nome do Item 4">
-        <h3>Nome do Item 2</h3>
-        <p>Preço: R$YY,YY</p>
-        <button onclick="comprar('produto4', 'Nome do Item 4', 'R$YY,YY')">Comprar</button>
-    </div>
+            <div class="menu-item" id="Hamburguer3">
+                <h3>X-egg</h3>
+                <p>Descrição: Pão, alface, tomate, molho, hamburguer, queijo e peito de peru.</p>
+                <p>Preço: R$24,00</p>
+                <button onclick="comprar('hamburguer3', 'X-egg', 'R$24,00')">Comprar</button>
+            </div>
 
-    <!-- Adicione mais itens conforme necessário -->
+            <div class="menu-item" id="Hamburguer4">
+                <h3>X-duplo</h3>
+                <p>Descrição: Pão, molho, 2 hamburguers, queijo e peito de peru.</p>
+                <p>Preço: R$27,00</p>
+                <button onclick="comprar('hamburguer4', 'X-duplo', 'R$27,00')">Comprar</button>
+            </div>
+
+            <div class="menu-item" id="Hamburguer5">
+                <h3>X-burguer de frango</h3>
+                <p>Descrição: Pão, molho, hamburguer de frango, queijo e peito de peru. </p>
+                <p>Preço: R$20,00</p>
+                <button onclick="comprar('hamburguer5', 'X-burguer de frango', 'R$20,00')">Comprar</button>
+            </div>
+
+            <div class="menu-item" id="Hamburguer6">
+                <h3>X-frango</h3>
+                <p>Descrição: Pão, alface, tomate, molho, hamburguer, queijo e peito de frango.</p>
+                <p>Preço: R$25,00</p>
+                <button onclick="comprar('hamburguer6', 'X-frango', 'R$25,00')">Comprar</button>
+            </div>
+
+            <div class="menu-item" id="Hamburguer7">
+                <h3>X-filé de frango</h3>
+                <p>Descrição: Pão, alface, tomate, molho, filé de frango e queijo.</p>
+                <p>Preço: R$22,00</p>
+                <button onclick="comprar('hamburguer7', 'X-filé de frango', 'R$22,00')">Comprar</button>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </section>
+
+    <section id="pasteis" class="menu-section">
+        <h2>Pasteis</h2>
+        <div class="menu">
+            <div class="menu-item" id="pastel1">
+                <img src="pastel.jpg" alt="">
+                <h3>Pastel</h3>
+                <p>Preço: R$5,50</p>
+                <button onclick="comprar('pastel1', 'Pastel', 'R$5,50')">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="bebidas" class="menu-section">
+        <h2>Bebidas</h2>
+        <div class="menu">
+            <div class="menu-item" id="bebida1">
+                <img src="bebida.jpg" alt="">
+                <h3>Bebida</h3>
+                <p>Preço: R$3,00</p>
+                <button onclick="comprar('bebida1', 'Bebida', 'R$3,00')">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="porcoes" class="menu-section">
+        <h2>Porções</h2>
+        <div class="menu">
+            <div class="menu-item" id="porcao1">
+                <img src="porcao.jpg" alt="">
+                <h3>Porção</h3>
+                <p>Preço: R$15,90</p>
+                <button onclick="comprar('porcao1', 'Porção', 'R$15,90')">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="milkshake" class="menu-section">
+        <h2>Milk Shake</h2>
+        <div class="menu">
+            <div class="menu-item" id="milkshake1">
+                <img src="milkshake.jpg" alt="">
+                <h3>Milk Shake</h3>
+                <p>Preço: R$8,50</p>
+                <button onclick="comprar('milkshake1', 'Milk Shake', 'R$8,50')">Comprar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="sobre-nos">
+        <h2>Sobre Nós</h2>
+        <p>Bem-vindo ao Cantinho do Sabor, onde buscamos oferecer experiências gastronômicas únicas. Nossos chefs talentosos preparam pratos deliciosos com ingredientes frescos e de alta qualidade. Estamos comprometidos em proporcionar momentos especiais aos nossos clientes. Venha nos visitar e descubra o sabor autêntico!</p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Telefone: (41) 99866-5850</p>
+                <p>Email: contato@cantinhodosabor.com</p>
+            </div>
+            <div class="social-media">
+                <h2>Siga-nos</h2>
+                <a href="#" target="_blank"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="#" target="_blank"><img src="twitter-icon.png" alt="Twitter"></a>
+            </div>
+        </div>
+        <p>&copy; 2023 Cantinho do Sabor</p>
+    </footer>
 
     <script>
         function comprar(id, item, preco) {
@@ -50,7 +170,6 @@
             var urlWhatsApp = 'https://api.whatsapp.com/send?phone=' + numeroWhatsApp + '&text=' + mensagem;
             window.open(urlWhatsApp, '_blank');
         }
-        
     </script>
 
 </body>
