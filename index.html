@@ -4,7 +4,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantinho do Sabor</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+    header {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .menu-item {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: orange;
+    }
+
+    header {
+        background: linear-gradient(to right, #946833, #86473c); /* Gradiente laranja para vermelho */
+        color: white;
+        text-align: center;
+        padding: 15px;
+        font-size: 24px;
+        font-weight: bold;
+        letter-spacing: 2px;
+    }
+
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .menu-item {
+        flex: 1 1 300px;
+        margin: 20px;
+        padding: 20px;
+        text-align: center;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .menu-item:hover {
+        transform: scale(1.05);
+    }
+
+    img {
+        max-width: 100%;
+        border-radius: 8px;
+    }
+
+    h3 {
+        color: #333;
+    }
+
+    p {
+        color: #777;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    @media screen and (max-width: 600px) {
+        .menu-item {
+            margin: 10px;
+            padding: 15px;
+        }
+    }
+
+    .sobre-nos {
+        background-color: #f4f4f4;
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    nav {
+        background-color: #333;
+    }
+
+    nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        display: flex; /* Utiliza flexbox para centralizar os itens na nav */
+        justify-content: center; /* Centraliza os itens na nav horizontalmente */
+    }
+
+    nav li {
+        display: inline; /* Exibe os itens na mesma linha */
+    }
+
+    nav a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    nav a:hover {
+        background-color: #555;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        padding: 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+        padding-top: 60px;
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-top: 20px; /* Espaço entre o conteúdo e o rodapé */
+    }
+        </style>
 </head>
 <body>
 
@@ -26,68 +218,56 @@
     <section id="hamburguers" class="menu-section">
         <h2>Hamburguer bovino artesanal (150GR)</h2>
         
+
         <div class="menu">
             <div class="menu-item" id="Hamburguer1">
                 <h3>X-burguer</h3>
                 <p>Descrição: Pão, molho, hamburguer, queijo e peito de peru.</p>
-                <p>Preço: R$20,00</p>
-                <button onclick="comprar('hamburguer1', 'X-burguer', 'R$20,00')">Comprar</button>
+                <p class="preco">Preço: R$20,00</p>
+                <button class="adicionar-carrinho" onclick="adicionarAoCarrinho('X-burguer', 20.00)">Adicionar ao Carrinho</button>
             </div>
 
             <div class="menu-item" id="Hamburguer2">
                 <h3>X-salada</h3>
                 <p>Descrição: Pão, alface, tomate, , molho, hamburguer, queijo e peito de peru.</p>
                 <p>Preço: R$22,00</p>
-                <button onclick="comprar('hamburguer2', 'X-salada', 'R$22,00')">Comprar</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer3">
                 <h3>X-egg</h3>
                 <p>Descrição: Pão, alface, tomate, molho, hamburguer, queijo e peito de peru.</p>
                 <p>Preço: R$24,00</p>
-                <button onclick="comprar('hamburguer3', 'X-egg', 'R$24,00')">Comprar</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer4">
                 <h3>X-duplo</h3>
                 <p>Descrição: Pão, molho, 2 hamburguers, queijo e peito de peru.</p>
                 <p>Preço: R$27,00</p>
-                <button onclick="comprar('hamburguer4', 'X-duplo', 'R$27,00')">Comprar</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer5">
                 <h3>X-burguer de frango</h3>
                 <p>Descrição: Pão, molho, hamburguer de frango, queijo e peito de peru. </p>
                 <p>Preço: R$20,00</p>
-                <button onclick="comprar('hamburguer5', 'X-burguer de frango', 'R$20,00')">Comprar</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer6">
                 <h3>X-frango</h3>
                 <p>Descrição: Pão, alface, tomate, molho, hamburguer, queijo e peito de frango.</p>
                 <p>Preço: R$25,00</p>
-                <button onclick="comprar('hamburguer6', 'X-frango', 'R$25,00')">Comprar</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer7">
                 <h3>X-filé de frango</h3>
                 <p>Descrição: Pão, alface, tomate, molho, filé de frango e queijo.</p>
                 <p>Preço: R$22,00</p>
-                <button onclick="comprar('hamburguer7', 'X-filé de frango', 'R$22,00')">Comprar</button>
+                
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </div>
     </section>
@@ -99,7 +279,6 @@
                 <img src="pastel.jpg" alt="">
                 <h3>Pastel</h3>
                 <p>Preço: R$5,50</p>
-                <button onclick="comprar('pastel1', 'Pastel', 'R$5,50')">Comprar</button>
             </div>
         </div>
     </section>
@@ -111,7 +290,6 @@
                 <img src="bebida.jpg" alt="">
                 <h3>Bebida</h3>
                 <p>Preço: R$3,00</p>
-                <button onclick="comprar('bebida1', 'Bebida', 'R$3,00')">Comprar</button>
             </div>
         </div>
     </section>
@@ -123,7 +301,6 @@
                 <img src="porcao.jpg" alt="">
                 <h3>Porção</h3>
                 <p>Preço: R$15,90</p>
-                <button onclick="comprar('porcao1', 'Porção', 'R$15,90')">Comprar</button>
             </div>
         </div>
     </section>
@@ -135,9 +312,35 @@
                 <img src="milkshake.jpg" alt="">
                 <h3>Milk Shake</h3>
                 <p>Preço: R$8,50</p>
-                <button onclick="comprar('milkshake1', 'Milk Shake', 'R$8,50')">Comprar</button>
             </div>
         </div>
+    </section>
+
+    <!-- Tela de Adicionais -->
+<div id="tela-adicionais" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharAdicionais()">&times;</span>
+      <h2>Escolha os Adicionais</h2>
+      <label>
+        Hambúrguer (R$7,00 cada):
+        <input type="number" id="quantidadeHamburguer" min="0" value="0">
+      </label>
+      <br>
+      <label>
+        Outros Adicionais (R$4,00 cada):
+        <input type="number" id="quantidadeOutros" min="0" value="0">
+      </label>
+      <br>
+      <button onclick="adicionarAdicionais()">Adicionar ao Carrinho</button>
+    </div>
+  </div>
+  
+
+
+    <section id="carrinho" class="menu-section">
+        <h2>Carrinho</h2>
+        <div id="carrinho-container"></div>
+        <button id="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
     </section>
 
     <section class="sobre-nos">
@@ -162,15 +365,102 @@
         <p>&copy; 2023 Cantinho do Sabor</p>
     </footer>
 
-    <script>
-        function comprar(id, item, preco) {
-            var numeroWhatsApp = '41998665850';
-            var mensagem = encodeURIComponent('Gostaria de encomendar o lanche: ' + item + ' (ID: ' + id + ')' +
-                '\nPreço: ' + preco);
-            var urlWhatsApp = 'https://api.whatsapp.com/send?phone=' + numeroWhatsApp + '&text=' + mensagem;
-            window.open(urlWhatsApp, '_blank');
-        }
-    </script>
 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carrinhoContainer = document.getElementById("carrinho-container");
+            const finalizarCompraBtn = document.getElementById("finalizar-compra");
+            let carrinho = [];
+
+// Função para abrir a tela de adicionais
+window.abrirAdicionais = function () {
+    const telaAdicionais = document.getElementById("tela-adicionais");
+    telaAdicionais.style.display = "block";
+};
+
+// Função para fechar a tela de adicionais
+window.fecharAdicionais = function () {
+    const telaAdicionais = document.getElementById("tela-adicionais");
+    telaAdicionais.style.display = "none";
+};
+
+// Função para adicionar os adicionais ao carrinho
+window.adicionarAdicionais = function () {
+    const quantidadeHamburguer = parseInt(document.getElementById("quantidadeHamburguer").value) || 0;
+    const quantidadeOutros = parseInt(document.getElementById("quantidadeOutros").value) || 0;
+
+    const precoHamburguer = 7.00;
+    const precoOutros = 4.00;
+
+    const totalHamburguer = quantidadeHamburguer * precoHamburguer;
+    const totalOutros = quantidadeOutros * precoOutros;
+
+    const totalAdicionais = totalHamburguer + totalOutros;
+
+    carrinho.push({
+        nome: "Adicionais",
+        preco: totalAdicionais,
+        quantidade: quantidadeHamburguer + quantidadeOutros,
+        adicionais: `Hambúrguer: ${quantidadeHamburguer}x, Outros: ${quantidadeOutros}x`
+    });
+
+    fecharAdicionais();
+    atualizarCarrinho();
+};
+
+
+            function atualizarCarrinho() {
+                carrinhoContainer.innerHTML = "";
+
+                let precoTotal = 0;
+
+                carrinho.forEach((item) => {
+                    precoTotal += item.preco * item.quantidade;
+
+                    const itemHTML = `
+                        <div class="item-carrinho">
+                            <p>${item.nome} - ${item.adicionais} - Quantidade: ${item.quantidade}</p>
+                            <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+                            <button class="remover-item" onclick="removerItem('${item.nome}')">Remover</button>
+                        </div>
+                    `;
+
+                    carrinhoContainer.innerHTML += itemHTML;
+                });
+
+                const totalHTML = `
+                    <div class="total-carrinho">
+                        <p>Total: R$ ${precoTotal.toFixed(2)}</p>
+                    </div>
+                `;
+
+                carrinhoContainer.innerHTML += totalHTML;
+            }
+
+            window.removerItem = function (nomeProduto) {
+                carrinho = carrinho.filter((item) => item.nome !== nomeProduto);
+                atualizarCarrinho();
+            };
+
+            window.finalizarCompra = function () {
+                const mensagemWhatsApp = `Olá! Gostaria de finalizar a compra com os seguintes itens:\n`;
+
+                carrinho.forEach((item) => {
+                    mensagemWhatsApp += `${item.nome} - ${item.adicionais} - Quantidade: ${item.quantidade} - Preço: R$ ${item.preco.toFixed(2)}\n`;
+                });
+
+                mensagemWhatsApp += `Total: R$ ${precoTotal.toFixed(2)}`;
+
+                const numeroWhatsApp = 41998665850; // Substitua pelo seu número do WhatsApp
+
+                const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(
+                    mensagemWhatsApp
+                )}`;
+
+                window.open(linkWhatsApp, '_blank');
+            };
+        });
+    </script>
 </body>
 </html>
