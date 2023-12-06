@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cantinho do Sabor</title>
+
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -12,148 +13,156 @@
             background-color: #f4f4f4;
         }
 
-    header {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 15px;
-    }
-
-    .menu-item {
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        margin: 20px;
-        padding: 20px;
-        text-align: center;
-    }
-
-    img {
-        max-width: 100%;
-        border-radius: 8px;
-    }
-
-    body {
-        font-family: 'Arial', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: orange;
-    }
-
-    header {
-        background: linear-gradient(to right, #946833, #86473c); /* Gradiente laranja para vermelho */
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 24px;
-        font-weight: bold;
-        letter-spacing: 2px;
-    }
-
-    .menu {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
-
-    .menu-item {
-        flex: 1 1 300px;
-        margin: 20px;
-        padding: 20px;
-        text-align: center;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .menu-item:hover {
-        transform: scale(1.05);
-    }
-
-    img {
-        max-width: 100%;
-        border-radius: 8px;
-    }
-
-    h3 {
-        color: #333;
-    }
-
-    p {
-        color: #777;
-    }
-
-    button {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-
-    @media screen and (max-width: 600px) {
-        .menu-item {
-            margin: 10px;
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
             padding: 15px;
         }
-    }
 
-    .sobre-nos {
-        background-color: #f4f4f4;
-        padding: 40px 20px;
-        text-align: center;
-    }
+        .menu-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+        }
 
-    nav {
-        background-color: #333;
-    }
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
 
-    nav ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        display: flex; /* Utiliza flexbox para centralizar os itens na nav */
-        justify-content: center; /* Centraliza os itens na nav horizontalmente */
-    }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: orange;
+        }
 
-    nav li {
-        display: inline; /* Exibe os itens na mesma linha */
-    }
+        header {
+            background: linear-gradient(to right, #946833, #86473c); /* Gradiente laranja para vermelho */
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
 
-    nav a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
+        .menu {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
 
-    nav a:hover {
-        background-color: #555;
-    }
+        .menu-item {
+            flex: 1 1 300px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
 
-    button {
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        padding: 10px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+        .menu-item:hover {
+            transform: scale(1.05);
+        }
 
-    .modal {
+        img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        h3 {
+            color: #333;
+        }
+
+        p {
+            color: #777;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        @media screen and (max-width: 600px) {
+            .menu-item {
+                margin: 10px;
+                padding: 15px;
+            }
+        }
+
+        .sobre-nos {
+            background-color: #f4f4f4;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex; /* Utiliza flexbox para centralizar os itens na nav */
+            justify-content: center; /* Centraliza os itens na nav horizontalmente */
+        }
+
+        nav li {
+            display: inline; /* Exibe os itens na mesma linha */
+        }
+
+        nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px; /* Espaço entre o conteúdo e o rodapé */
+        }
+
+        .modal {
         display: none;
         position: fixed;
         z-index: 1;
@@ -162,44 +171,71 @@
         width: 100%;
         height: 100%;
         overflow: auto;
-        background-color: rgb(0,0,0);
         background-color: rgba(0,0,0,0.4);
-        padding-top: 60px;
-    }
+        }
 
-    .modal-content {
+        .modal-content {
         background-color: #fefefe;
-        margin: 5% auto;
+        margin: 10% auto;
         padding: 20px;
         border: 1px solid #888;
-        width: 80%;
-    }
+        width: 60%;
+        }
 
-    .close {
+        .close {
         color: #aaa;
         float: right;
         font-size: 28px;
         font-weight: bold;
-    }
+        }
 
-    .close:hover,
-    .close:focus {
+        .close:hover,
+        .close:focus {
         color: black;
         text-decoration: none;
         cursor: pointer;
-    }
+        }
 
-    footer {
-        background-color: #333;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        margin-top: 20px; /* Espaço entre o conteúdo e o rodapé */
-    }
-        </style>
+
+    </style>
 </head>
-<body>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2>Adicionar ao Carrinho</h2>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" value="1" onchange="atualizarPrecoTotalModal()">
+    
+            <label for="adicionais">Adicionais:</label>
+            <select id="adicionais" name="adicionais" onchange="mostrarOutrosAdicionais(); atualizarPrecoTotalModal()">
+                <option value="nenhum">Nenhum Adicional (R$0,00)</option>
+                <option value="hamburguer">Hamburguer (R$7,00)</option>
+                <option value="outros">Outros Adicionais (R$4,00)</option>
+            </select>
+    
+            <div id="outrosAdicionais" style="display: none;">
+                <label for="outros">Outros Adicionais:</label>
+                <input type="text" id="outros" name="outros">
+                <label for="quantidadeOutros">Quantidade:</label>
+                <input type="number" id="quantidadeOutros" name="quantidadeOutros" min="1" value="1" onchange="atualizarPrecoTotalModal()">
+            </div>
+    
+            <!-- Adicione este trecho para o adicional "Hamburguer" -->
+            <div id="quantidadeHamburguer" style="display: none;">
+                <label for="quantidadeHamburguer">Quantidade de Hamburguer:</label>
+                <input type="number" id="quantidadeHamburguer" name="quantidadeHamburguer" min="1" value="1" onchange="atualizarPrecoTotalModal()">
+            </div>
+    
+            <!-- Adicione este trecho para exibir o preço total no modal -->
+            <div id="precoTotalModal">
+                <p><strong>Preço Total: R$<span id="precoTotalSpan">20.00</span></strong></p>
+            </div>
+    
+            <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+    
     <header>
         <h1>Cantinho do Sabor</h1>
         <p>Sua experiência gastronômica única</p>
@@ -224,7 +260,9 @@
                 <h3>X-burguer</h3>
                 <p>Descrição: Pão, molho, hamburguer, queijo e peito de peru.</p>
                 <p class="preco">Preço: R$20,00</p>
-                <button class="adicionar-carrinho" onclick="adicionarAoCarrinho('X-burguer', 20.00)">Adicionar ao Carrinho</button>
+                <button onclick="abrirModal()">Adicionar ao Carrinho</button>
+
+        
             </div>
 
             <div class="menu-item" id="Hamburguer2">
@@ -316,32 +354,15 @@
         </div>
     </section>
 
-    <!-- Tela de Adicionais -->
-<div id="tela-adicionais" class="modal">
-    <div class="modal-content">
-      <span class="close" onclick="fecharAdicionais()">&times;</span>
-      <h2>Escolha os Adicionais</h2>
-      <label>
-        Hambúrguer (R$7,00 cada):
-        <input type="number" id="quantidadeHamburguer" min="0" value="0">
-      </label>
-      <br>
-      <label>
-        Outros Adicionais (R$4,00 cada):
-        <input type="number" id="quantidadeOutros" min="0" value="0">
-      </label>
-      <br>
-      <button onclick="adicionarAdicionais()">Adicionar ao Carrinho</button>
-    </div>
-  </div>
-  
-
 
     <section id="carrinho" class="menu-section">
         <h2>Carrinho</h2>
         <div id="carrinho-container"></div>
         <button id="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
     </section>
+
+
+
 
     <section class="sobre-nos">
         <h2>Sobre Nós</h2>
@@ -365,102 +386,160 @@
         <p>&copy; 2023 Cantinho do Sabor</p>
     </footer>
 
+    
 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const carrinhoContainer = document.getElementById("carrinho-container");
-            const finalizarCompraBtn = document.getElementById("finalizar-compra");
-            let carrinho = [];
+<script>
+    let carrinho = [];
 
-// Função para abrir a tela de adicionais
-window.abrirAdicionais = function () {
-    const telaAdicionais = document.getElementById("tela-adicionais");
-    telaAdicionais.style.display = "block";
-};
+    // Função para abrir o modal
+    function abrirModal() {
+        document.getElementById('modal').style.display = 'block';
+        atualizarPrecoTotalModal(); // Chame esta função ao abrir o modal para garantir que o preço total seja exibido corretamente
+    }
 
-// Função para fechar a tela de adicionais
-window.fecharAdicionais = function () {
-    const telaAdicionais = document.getElementById("tela-adicionais");
-    telaAdicionais.style.display = "none";
-};
+    // Função para fechar o modal
+    function fecharModal() {
+        document.getElementById('modal').style.display = 'none';
+    }
 
-// Função para adicionar os adicionais ao carrinho
-window.adicionarAdicionais = function () {
-    const quantidadeHamburguer = parseInt(document.getElementById("quantidadeHamburguer").value) || 0;
-    const quantidadeOutros = parseInt(document.getElementById("quantidadeOutros").value) || 0;
+    // Função para mostrar/ocultar a caixa de outros adicionais
+    function mostrarOutrosAdicionais() {
+        var select = document.getElementById('adicionais');
+        var outrosAdicionais = document.getElementById('outrosAdicionais');
 
-    const precoHamburguer = 7.00;
-    const precoOutros = 4.00;
+        if (select.value === 'outros') {
+            outrosAdicionais.style.display = 'block';
+        } else {
+            outrosAdicionais.style.display = 'none';
+        }
 
-    const totalHamburguer = quantidadeHamburguer * precoHamburguer;
-    const totalOutros = quantidadeOutros * precoOutros;
-
-    const totalAdicionais = totalHamburguer + totalOutros;
-
-    carrinho.push({
-        nome: "Adicionais",
-        preco: totalAdicionais,
-        quantidade: quantidadeHamburguer + quantidadeOutros,
-        adicionais: `Hambúrguer: ${quantidadeHamburguer}x, Outros: ${quantidadeOutros}x`
-    });
-
-    fecharAdicionais();
-    atualizarCarrinho();
-};
+        // Se o adicional escolhido for "Hamburguer", mostrar o campo de quantidade
 
 
-            function atualizarCarrinho() {
-                carrinhoContainer.innerHTML = "";
+        // Atualize o preço total no modal ao mudar as opções
+        atualizarPrecoTotalModal();
+    }
 
-                let precoTotal = 0;
+    // Função para adicionar ao carrinho
+    function adicionarAoCarrinho() {
+        // Obtenha os valores selecionados e adicione ao carrinho
+        const item = {
+            nome: [], // Nome do item
+            quantidade: parseFloat(document.getElementById('quantidade').value),
+            preco: parseFloat(document.getElementById('precoTotalSpan').textContent), // Preço total com base nas escolhas
+            adicionais: [], // Adicionais do item
+        };
 
-                carrinho.forEach((item) => {
-                    precoTotal += item.preco * item.quantidade;
+        const selectAdicionais = document.getElementById('adicionais');
+        const outrosAdicionaisInput = document.getElementById('outros');
+        const quantidadeOutrosInput = document.getElementById('quantidadeOutros');
 
-                    const itemHTML = `
-                        <div class="item-carrinho">
-                            <p>${item.nome} - ${item.adicionais} - Quantidade: ${item.quantidade}</p>
-                            <p>Preço: R$ ${item.preco.toFixed(2)}</p>
-                            <button class="remover-item" onclick="removerItem('${item.nome}')">Remover</button>
-                        </div>
-                    `;
+        if (selectAdicionais.value === 'nenhum') {
+            item.adicionais.push({ nome: "Nenhum Adicional", preco: 0.00 });
+        } else if (selectAdicionais.value === 'hamburguer') {
+            item.adicionais.push({ nome: "Hamburguer", preco: 7.00, quantidade: 1 }); // Sem opção de escolher quantidade
+        } else if (selectAdicionais.value === 'outros') {
+            const outrosAdicional = outrosAdicionaisInput.value.trim();
+            const quantidadeOutros = parseInt(quantidadeOutrosInput.value) || 1;
 
-                    carrinhoContainer.innerHTML += itemHTML;
-                });
+            if (outrosAdicional !== '' && quantidadeOutros > 0) {
+                item.adicionais.push({ nome: outrosAdicional, preco: 7.00, quantidade: quantidadeOutros }); // Mudança para 7.00 por cada "outro adicional"
+            }
+        }
 
-                const totalHTML = `
-                    <div class="total-carrinho">
-                        <p>Total: R$ ${precoTotal.toFixed(2)}</p>
-                    </div>
-                `;
+        carrinho.push(item);
 
-                carrinhoContainer.innerHTML += totalHTML;
+        // Exiba o carrinho na seção Carrinho
+        exibirCarrinho();
+
+        // Feche o modal após adicionar ao carrinho
+        fecharModal();
+    }
+
+    // Função para exibir o carrinho na seção Carrinho
+    function exibirCarrinho() {
+        const carrinhoContainer = document.getElementById('carrinho-container');
+        carrinhoContainer.innerHTML = '';
+
+        for (const item of carrinho) {
+            const itemHTML = document.createElement('div');
+            itemHTML.innerHTML = `<p>${item.nome} - Quantidade: ${item.quantidade} - Preço: R$${item.preco.toFixed(2)}</p>`;
+
+            if (item.adicionais.length > 0) {
+                const adicionaisHTML = document.createElement('ul');
+                for (const adicional of item.adicionais) {
+                    adicionaisHTML.innerHTML += `<li>${adicional.nome} - Quantidade: ${adicional.quantidade || 1} - Preço: R$${adicional.preco.toFixed(2)}</li>`;
+                }
+                itemHTML.appendChild(adicionaisHTML);
             }
 
-            window.removerItem = function (nomeProduto) {
-                carrinho = carrinho.filter((item) => item.nome !== nomeProduto);
-                atualizarCarrinho();
-            };
+            carrinhoContainer.appendChild(itemHTML);
+        }
 
-            window.finalizarCompra = function () {
-                const mensagemWhatsApp = `Olá! Gostaria de finalizar a compra com os seguintes itens:\n`;
+        // Adicionar o preço total no final do carrinho
+        const precoTotalCarrinho = calcularPrecoTotalCarrinho();
+        carrinhoContainer.innerHTML += `<p><strong>Total do Carrinho: R$${precoTotalCarrinho.toFixed(2)}</strong></p>`;
+    }
 
-                carrinho.forEach((item) => {
-                    mensagemWhatsApp += `${item.nome} - ${item.adicionais} - Quantidade: ${item.quantidade} - Preço: R$ ${item.preco.toFixed(2)}\n`;
-                });
+    // Função para calcular o preço total de um item ou adicional
+    function calcularPrecoTotal(item) {
+        let precoTotal = item.preco;
 
-                mensagemWhatsApp += `Total: R$ ${precoTotal.toFixed(2)}`;
+        if (item.quantidade) {
+            precoTotal *= item.quantidade;
+        }
 
-                const numeroWhatsApp = 41998665850; // Substitua pelo seu número do WhatsApp
+        if (item.adicionais && item.adicionais.length > 0) {
+            for (const adicional of item.adicionais) {
+                precoTotal += adicional.preco * (adicional.quantidade || 1);
+            }
+        }
 
-                const linkWhatsApp = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(
-                    mensagemWhatsApp
-                )}`;
+        return precoTotal.toFixed(2);
+    }
 
-                window.open(linkWhatsApp, '_blank');
-            };
-        });
-    </script>
+    // Função para calcular o preço total do carrinho
+    function calcularPrecoTotalCarrinho() {
+        let precoTotalCarrinho = 0;
+
+        for (const item of carrinho) {
+            precoTotalCarrinho += parseFloat(calcularPrecoTotal(item));
+        }
+
+        return precoTotalCarrinho;
+    }
+
+    // Função para finalizar a compra
+    function finalizarCompra() {
+        // Lógica para enviar as informações do carrinho para o WhatsApp
+        // ...
+    }
+
+    // Função para atualizar o preço total no modal
+    function atualizarPrecoTotalModal() {
+        const precoTotalSpan = document.getElementById('precoTotalSpan');
+
+        // Obtenha os valores selecionados
+        const quantidade = parseFloat(document.getElementById('quantidade').value);
+        const selectAdicionais = document.getElementById('adicionais');
+        const quantidadeOutrosInput = document.getElementById('quantidadeOutros');
+
+        // Calcule o preço total com base nas escolhas
+        let precoTotal = 20.00 * quantidade; // Preço do item principal
+
+        if (selectAdicionais.value === 'outros') {
+            const quantidadeOutros = parseInt(quantidadeOutrosInput.value) || 1;
+            precoTotal += 7.00 * quantidadeOutros; // Custo de R$7,00 por cada "outro adicional"
+        }
+
+        precoTotalSpan.textContent = precoTotal.toFixed(2);
+    }
+</script>
+
+<!-- Seu código HTML posterior... -->
+
+
+    
 </body>
 </html>
