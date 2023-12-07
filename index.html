@@ -6,6 +6,7 @@
     <title>Cantinho do Sabor</title>
     <link rel="stylesheet" href="style.css">
     <script src="modalhamburguer.js"></script>
+    <script src="modalpasteis.js"></script>
 </head>
 
 <body>
@@ -95,6 +96,39 @@
         </div>
     </section>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2>Adicionar ao Carrinho</h2>
+            <p id="modal-nome"></p>
+            <p id="modal-preco"></p>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" min="1" value="1">
+            <br>
+            <p>Escolha o tipo de adicional:</p>
+            <select id="tipoAdicional" onchange="mostrarOpcoesAdicionais()">
+                <option value="nenhum adicional">Nenhum adicional (R$0,00)</option>
+                <option value="hamburguer">Hamburguer (R$7,00 cada)</option>
+                <option value="outros">Outros Adicionais (R$4,00 cada)</option>
+            </select>
+            <div id="opcoesHamburguer" style="display: none;">
+                <label for="quantidadeHamburguer">Quantidade de Hamburgueres:</label>
+                <input type="number" id="quantidadeHamburguer" min="0" value="0">
+            </div>
+            <div id="opcoesOutros" style="display: none;">
+                <label for="nomeOutros">Nome do Adicional:</label>
+                <input type="text" id="nomeOutros">
+                <br>
+                <label for="quantidadeOutros">Quantidade:</label>
+                <input type="number" id="quantidadeOutros" min="0" value="0">
+            </div>
+            <br>
+            <input type="hidden" id="modal-id">
+            <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+
+
 
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 
@@ -107,7 +141,7 @@
             <div class="menu-item" id="pastel1">
                 <h3>Pastel de carne</h3>
                 <p>Preço: R$13,00</p>
-                <button onclick="abrirModal('Pastel de carne', 13.00, 'pastel1', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de carne', 13.00, 'pastel1')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -115,7 +149,7 @@
             <div class="menu-item" id="pastel2">
                 <h3>Pastel de frango</h3>
                 <p>Preço: R$13,00</p>
-                <button onclick="abrirModal('Pastel de frango', 13.00, 'pastel2', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de frango', 13.00, 'pastel2')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -123,7 +157,7 @@
             <div class="menu-item" id="pastel3">
                 <h3>Pastel de queijo</h3>
                 <p>Preço: R$13,00</p>
-                <button onclick="abrirModal('Pastel de queijo', 13.00, 'pastel3', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de queijo', 13.00, 'pastel3')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -131,7 +165,7 @@
             <div class="menu-item" id="pastel4">
                 <h3>Pastel de carne com queijo</h3>
                 <p>Preço: R$15,00</p>
-                <button onclick="abrirModal('Pastel de carne com queijo', 15.00, 'pastel4', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de carne com queijo', 15.00, 'pastel4')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -139,7 +173,7 @@
             <div class="menu-item" id="pastel5">
                 <h3>Pastel de frango com queijo</h3>
                 <p>Preço: R$15,00</p>
-                <button onclick="abrirModal('Pastel de frango com queijo', 15.00, 'pastel6', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de frango com queijo', 15.00, 'pastel5')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -147,7 +181,7 @@
             <div class="menu-item" id="pastel6">
                 <h3>Pastel de frango com catupiry</h3>
                 <p>Preço: R$15,00</p>
-                <button onclick="abrirModal('Pastel de frango com catupiry', 15.00, 'pastel6', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de frango com catupiry', 15.00, 'pastel6')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -155,7 +189,7 @@
             <div class="menu-item" id="pastel7">
                 <h3>Pastel de palmito</h3>
                 <p>Preço: R$15,00</p>
-                <button onclick="abrirModal('Pastel de palmito', 15.00, 'pastel7', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de palmito', 15.00, 'pastel7')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -163,7 +197,7 @@
             <div class="menu-item" id="pastel8">
                 <h3>Pastel de palmito com queijo</h3>
                 <p>Preço: R$18,00</p>
-                <button onclick="abrirModal('Pastel de palmito com queijo', 18.00, 'pastel8', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de palmito com queijo', 18.00, 'pastel8')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -171,7 +205,7 @@
             <div class="menu-item" id="pastel9">
                 <h3>Pastel de palmito com catupiry</h3>
                 <p>Preço: R$18,00</p>
-                <button onclick="abrirModal('Pastel de palmito com catupiry', 18.00, 'pastel19', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de palmito com catupiry', 18.00, 'pastel19')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -179,7 +213,7 @@
             <div class="menu-item" id="pastel10">
                 <h3>Pastel de pizza</h3>
                 <p>Preço: R$18,00</p>
-                <button onclick="abrirModal('Pastel de pizza', 18.00, 'pastel10', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de pizza', 18.00, 'pastel10')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -187,7 +221,7 @@
             <div class="menu-item" id="pastel11">
                 <h3>Pastel de banana com nutella e canela</h3>
                 <p>Preço: R$17,00</p>
-                <button onclick="abrirModal('Pastel de banana com nutella e canela', 17.00, 'pastel11', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de banana com nutella e canela', 17.00, 'pastel11')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
@@ -195,11 +229,29 @@
             <div class="menu-item" id="pastel12">
                 <h3>Pastel de banana com canela, leite condensado e queijo</h3>
                 <p>Preço: R$15,00</p>
-                <button onclick="abrirModal('Pastel de banana com canela, leite condensado e queijo', 15.00, 'pastel12', 'pasteis')">Adicionar ao Carrinho</button>
+                <button onclick="abrirModalPasteis('Pastel de banana com canela, leite condensado e queijo', 15.00, 'pastel12')">Adicionar ao Carrinho</button>
             </div>
         </div>
 
     </section>
+
+
+    <div id="modalPasteis" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal('modalPasteis')">&times;</span>
+            <h2>Adicionar ao Carrinho</h2>
+            <p id="modal-nome-pasteis"></p>
+            <p id="modal-preco-pasteis"></p>
+            <label for="quantidade-pasteis">Quantidade:</label>
+            <input type="number" id="quantidade-pasteis" min="1" value="1">
+            <br>
+            <p>Adicional (R$3,00 cada):</p>
+            <label for="quantidade-adicional-pasteis">Quantidade de adicionais:</label>
+            <input type="number" id="quantidade-adicional-pasteis" min="0" value="0">
+            <br>
+            <button onclick="adicionarAoCarrinhoPasteis()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
 
 
 <!-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -275,37 +327,6 @@
         <p>&copy; 2023 Cantinho do Sabor</p>
     </footer>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h2>Adicionar ao Carrinho</h2>
-            <p id="modal-nome"></p>
-            <p id="modal-preco"></p>
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" min="1" value="1">
-            <br>
-            <p>Escolha o tipo de adicional:</p>
-            <select id="tipoAdicional" onchange="mostrarOpcoesAdicionais()">
-                <option value="nenhum adicional">Nenhum adicional (R$0,00)</option>
-                <option value="hamburguer">Hamburguer (R$7,00 cada)</option>
-                <option value="outros">Outros Adicionais (R$4,00 cada)</option>
-            </select>
-            <div id="opcoesHamburguer" style="display: none;">
-                <label for="quantidadeHamburguer">Quantidade de Hamburgueres:</label>
-                <input type="number" id="quantidadeHamburguer" min="0" value="0">
-            </div>
-            <div id="opcoesOutros" style="display: none;">
-                <label for="nomeOutros">Nome do Adicional:</label>
-                <input type="text" id="nomeOutros">
-                <br>
-                <label for="quantidadeOutros">Quantidade:</label>
-                <input type="number" id="quantidadeOutros" min="0" value="0">
-            </div>
-            <br>
-            <input type="hidden" id="modal-id">
-            <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-        </div>
-    </div>
 
 
     
