@@ -247,21 +247,22 @@
                 <h3>X-burguer</h3>
                 <p>Descrição: Pão, molho, hamburguer, queijo e peito de peru.</p>
                 <p class="preco">Preço: R$20,00</p>
-                <button onclick="abrirModal('X-burguer', 20.00, 'Hamburguer1')">Adicionar ao Carrinho</button>
-        
+                <button onclick="abrirModal('X-burguer', 20.00, 'Hamburguer1', 'hamburguer')">Adicionar ao Carrinho</button>
             </div>
 
             <div class="menu-item" id="Hamburguer2">
                 <h3>X-salada</h3>
                 <p>Descrição: Pão, alface, tomate, , molho, hamburguer, queijo e peito de peru.</p>
                 <p>Preço: R$22,00</p>
-                
+                <button onclick="abrirModal('X-salada', 22.00, 'Hamburguer2', 'hamburguer')">Adicionar ao Carrinho</button>
             </div>
 
             <div class="menu-item" id="Hamburguer3">
                 <h3>X-egg</h3>
                 <p>Descrição: Pão, alface, tomate, molho, hamburguer, queijo e peito de peru.</p>
                 <p>Preço: R$24,00</p>
+                
+                <button onclick="abrirModal('X-egg', 24.00, 'Hamburguer3', 'hamburguer')">Adicionar ao Carrinho</button>
                 
             </div>
 
@@ -270,12 +271,16 @@
                 <p>Descrição: Pão, molho, 2 hamburguers, queijo e peito de peru.</p>
                 <p>Preço: R$27,00</p>
                 
+                <button onclick="abrirModal('X-duplo', 27.00, 'Hamburguer4', 'hamburguer')">Adicionar ao Carrinho</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer5">
                 <h3>X-burguer de frango</h3>
                 <p>Descrição: Pão, molho, hamburguer de frango, queijo e peito de peru. </p>
                 <p>Preço: R$20,00</p>
+                
+                <button onclick="abrirModal('X-burguer de frango', 20.00, 'Hamburguer5', 'hamburguer')">Adicionar ao Carrinho</button>
                 
             </div>
 
@@ -284,12 +289,16 @@
                 <p>Descrição: Pão, alface, tomate, molho, hamburguer, queijo e peito de frango.</p>
                 <p>Preço: R$25,00</p>
                 
+                <button onclick="abrirModal('X-frango', 25.00, 'Hamburguer6', 'hamburguer')">Adicionar ao Carrinho</button>
+                
             </div>
 
             <div class="menu-item" id="Hamburguer7">
                 <h3>X-filé de frango</h3>
                 <p>Descrição: Pão, alface, tomate, molho, filé de frango e queijo.</p>
                 <p>Preço: R$22,00</p>
+                
+                <button onclick="abrirModal('X-filé de frango', 22.00, 'Hamburguer7', 'hamburguer')">Adicionar ao Carrinho</button>
                 
             </div>
 
@@ -344,7 +353,7 @@
     <section id="carrinho" class="menu-section">
         <h2>Carrinho</h2>
         <div id="carrinho-container"></div>
-        <button id="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
+        <button id="finalizar-compra" onclick="prepararMensagemWhatsApp()">Finalizar Compra</button>
     </section>
 
 
@@ -383,6 +392,7 @@
             <br>
             <p>Escolha o tipo de adicional:</p>
             <select id="tipoAdicional" onchange="mostrarOpcoesAdicionais()">
+                <option value="nenhum adicional">Nenhum adicional (R$0,00)</option>
                 <option value="hamburguer">Hamburguer (R$7,00 cada)</option>
                 <option value="outros">Outros Adicionais (R$4,00 cada)</option>
             </select>
@@ -398,64 +408,72 @@
                 <input type="number" id="quantidadeOutros" min="0" value="0">
             </div>
             <br>
+            <input type="hidden" id="modal-id">
             <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
         </div>
     </div>
 
     
+    
+    
     <script>
         const carrinho = [];
-    
+        atualizarCarrinho();
+
         function abrirModal(nome, preco, id) {
             document.getElementById('modal').style.display = 'block';
             document.getElementById('modal-nome').innerText = nome;
             document.getElementById('modal-preco').innerText = `Preço: R$${preco.toFixed(2)}`;
             document.getElementById('modal-id').value = id;
         }
-    
+
         function fecharModal() {
             document.getElementById('modal').style.display = 'none';
             resetarOpcoesAdicionais();
         }
-    
+
         function adicionarAoCarrinho() {
             const id = document.getElementById('modal-id').value;
             const nome = document.getElementById('modal-nome').innerText;
-            const preco = parseFloat(document.getElementById('modal-preco').innerText.split(' ')[1]);
+            const preco = parseFloat(document.getElementById('modal-preco').innerText.replace('Preço: R$', '').replace(',', '.'));
             const quantidade = parseInt(document.getElementById('quantidade').value);
-    
+
             let totalAdicionais = 0;
             const tipoAdicional = document.getElementById('tipoAdicional').value;
-    
+            let detalhesAdicional = '';
+
             if (tipoAdicional === 'hamburguer') {
-                const quantidadeHamburguer = parseInt(document.getElementById('quantidadeHamburguer').value);
+                const quantidadeHamburguer = parseInt(document.getElementById('quantidadeHamburguer').value) || 0;
                 totalAdicionais = 7.00 * quantidadeHamburguer;
+                detalhesAdicional = `Adicional: Hamburguer (Quantidade: ${quantidadeHamburguer})`;
             } else if (tipoAdicional === 'outros') {
                 const nomeOutros = document.getElementById('nomeOutros').value;
-                const quantidadeOutros = parseInt(document.getElementById('quantidadeOutros').value);
+                const quantidadeOutros = parseInt(document.getElementById('quantidadeOutros').value) || 0;
                 totalAdicionais = 4.00 * quantidadeOutros;
-                // Aqui você pode salvar o nomeOutros se precisar
+                detalhesAdicional = `Adicional: ${nomeOutros} (Quantidade: ${quantidadeOutros})`;
             }
-    
-            const totalProduto = preco * quantidade + totalAdicionais;
-    
+
+            const totalProduto = (preco || 0) * quantidade + totalAdicionais;
+
             const produto = {
                 nome,
                 quantidade,
                 tipoAdicional,
-                totalProduto
+                detalhesAdicional,
+                totalProduto,
+                quantidadeAdicional: tipoAdicional === 'hamburguer' ? (parseInt(document.getElementById('quantidadeHamburguer').value) || 0) : (parseInt(document.getElementById('quantidadeOutros').value) || 0),
+                nomeAdicional: tipoAdicional === 'outros' ? document.getElementById('nomeOutros').value : '',
             };
-    
+
             carrinho.push(produto);
             fecharModal();
             atualizarCarrinho();
         }
-    
         function mostrarOpcoesAdicionais() {
             const tipoAdicional = document.getElementById('tipoAdicional').value;
             const opcoesHamburguer = document.getElementById('opcoesHamburguer');
             const opcoesOutros = document.getElementById('opcoesOutros');
-    
+
             if (tipoAdicional === 'hamburguer') {
                 opcoesHamburguer.style.display = 'block';
                 opcoesOutros.style.display = 'none';
@@ -467,44 +485,90 @@
                 opcoesOutros.style.display = 'none';
             }
         }
-    
+
         function resetarOpcoesAdicionais() {
             document.getElementById('quantidadeHamburguer').value = 0;
             document.getElementById('nomeOutros').value = '';
             document.getElementById('quantidadeOutros').value = 0;
         }
-    
-        function finalizarCompra() {
-            // Implemente a lógica desejada para finalizar a compra, por exemplo, enviar as informações do carrinho para o backend
-            // Aqui está uma versão simples para exibir as informações no console
-            console.log('Itens no carrinho:', carrinho);
-            alert('Compra finalizada com sucesso! Obrigado por escolher Cantinho do Sabor.');
+
+        function criarBotaoRemover(index) {
+            const botaoRemover = document.createElement('button');
+            botaoRemover.innerText = 'Remover';
+            botaoRemover.onclick = function () {
+                removerDoCarrinho(index);
+            };
+            return botaoRemover;
         }
-    
+
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1);
+            atualizarCarrinho();
+        }
+
         function atualizarCarrinho() {
             const carrinhoContainer = document.getElementById('carrinho-container');
-            carrinhoContainer.innerHTML = '';
-    
-            if (carrinho.length === 0) {
-                carrinhoContainer.innerHTML = '<p>Carrinho vazio</p>';
-            } else {
-                let totalCompra = 0;
-    
-                carrinho.forEach((produto, index) => {
-                    totalCompra += produto.totalProduto;
-    
-                    carrinhoContainer.innerHTML += `
-                        <div class="item-carrinho">
-                            <p>${produto.nome} - Quantidade: ${produto.quantidade} - Adicional: ${produto.tipoAdicional}</p>
-                            <p>Total: R$${produto.totalProduto.toFixed(2)}</p>
-                        </div>
-                    `;
-                });
-    
-                carrinhoContainer.innerHTML += `<p>Total da compra: R$${totalCompra.toFixed(2)}</p>`;
-            }
+            carrinhoContainer.innerHTML = ''; // Limpa o conteúdo atual do carrinho
+
+            let totalAPagar = 0;
+
+            carrinho.forEach((produto, index) => {
+                const itemCarrinho = document.createElement('div');
+                itemCarrinho.innerHTML = `${produto.nome} - Quantidade: ${produto.quantidade} - ${produto.detalhesAdicional} - Total: R$${produto.totalProduto.toFixed(2)}`;
+                
+                const botaoRemover = criarBotaoRemover(index);
+                itemCarrinho.appendChild(botaoRemover);
+
+                carrinhoContainer.appendChild(itemCarrinho);
+
+                totalAPagar += produto.totalProduto;
+            });
+
+            const totalAPagarElement = document.createElement('div');
+            totalAPagarElement.innerHTML = `<br>Total a Pagar: R$${totalAPagar.toFixed(2)}`;
+            carrinhoContainer.appendChild(totalAPagarElement);
         }
+
+        function prepararMensagemWhatsApp() {
+            const numeroWhatsApp = '41998665850'; // Substitua pelo seu número de WhatsApp
+            const mensagem = gerarMensagemCarrinho();
+
+            const linkWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensagem}`;
+
+            window.open(linkWhatsApp, '_blank');
+        }
+
+    function gerarMensagemCarrinho() {
+    let mensagem = 'Pedido do Cantinho do Sabor:\n';
+
+    carrinho.forEach((produto) => {
+        let detalhesAdicional = '';
+
+        if (produto.tipoAdicional === 'hamburguer') {
+            detalhesAdicional = `Adicional: Hamburguer (Quantidade: ${produto.quantidadeAdicional})`;
+        } else if (produto.tipoAdicional === 'outros') {
+            detalhesAdicional = `Adicional: ${produto.nomeAdicional} (Quantidade: ${produto.quantidadeAdicional})`;
+        }
+
+        mensagem += `${produto.nome} - Quantidade: ${produto.quantidade} - ${detalhesAdicional} - Total: R$${produto.totalProduto.toFixed(2)}\n`;
+    });
+
+    mensagem += `\nTotal a Pagar: R$${calcularTotalAPagar().toFixed(2)}`;
+
+    return encodeURIComponent(mensagem); // Adicionei o encodeURIComponent aqui
+}
+
+
+    function calcularTotalAPagar() {
+        let totalAPagar = 0;
+        carrinho.forEach((produto) => {
+            totalAPagar += produto.totalProduto;
+        });
+        return totalAPagar;
+    }
     </script>
+    
+    
 
 
     
