@@ -161,80 +161,67 @@
             padding: 10px;
             margin-top: 20px; /* Espaço entre o conteúdo e o rodapé */
         }
+        #carrinho-container {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+
+        #finalizar-compra {
+            background-color: #f44336;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        #finalizar-compra:hover {
+            background-color: #d32f2f;
+        }
 
         .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.4);
-        }
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center;
+    align-items: center;
+}
 
-        .modal-content {
-        background-color: #fefefe;
-        margin: 10% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 60%;
-        }
+.modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    margin: auto;
+}
 
-        .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        }
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
-        .close:hover,
-        .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-        }
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
 
 
     </style>
 </head>
 
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="fecharModal()">&times;</span>
-            <h2>Adicionar ao Carrinho</h2>
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" name="quantidade" min="1" value="1" onchange="atualizarPrecoTotalModal()">
-    
-            <label for="adicionais">Adicionais:</label>
-            <select id="adicionais" name="adicionais" onchange="mostrarOutrosAdicionais(); atualizarPrecoTotalModal()">
-                <option value="nenhum">Nenhum Adicional (R$0,00)</option>
-                <option value="hamburguer">Hamburguer (R$7,00)</option>
-                <option value="outros">Outros Adicionais (R$4,00)</option>
-            </select>
-    
-            <div id="outrosAdicionais" style="display: none;">
-                <label for="outros">Outros Adicionais:</label>
-                <input type="text" id="outros" name="outros">
-                <label for="quantidadeOutros">Quantidade:</label>
-                <input type="number" id="quantidadeOutros" name="quantidadeOutros" min="1" value="1" onchange="atualizarPrecoTotalModal()">
-            </div>
-    
-            <!-- Adicione este trecho para o adicional "Hamburguer" -->
-            <div id="quantidadeHamburguer" style="display: none;">
-                <label for="quantidadeHamburguer">Quantidade de Hamburguer:</label>
-                <input type="number" id="quantidadeHamburguer" name="quantidadeHamburguer" min="1" value="1" onchange="atualizarPrecoTotalModal()">
-            </div>
-    
-            <!-- Adicione este trecho para exibir o preço total no modal -->
-            <div id="precoTotalModal">
-                <p><strong>Preço Total: R$<span id="precoTotalSpan">20.00</span></strong></p>
-            </div>
-    
-            <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
-        </div>
-    </div>
+<body>
     
     <header>
         <h1>Cantinho do Sabor</h1>
@@ -260,8 +247,7 @@
                 <h3>X-burguer</h3>
                 <p>Descrição: Pão, molho, hamburguer, queijo e peito de peru.</p>
                 <p class="preco">Preço: R$20,00</p>
-                <button onclick="abrirModal()">Adicionar ao Carrinho</button>
-
+                <button onclick="abrirModal('X-burguer', 20.00, 'Hamburguer1')">Adicionar ao Carrinho</button>
         
             </div>
 
@@ -386,158 +372,139 @@
         <p>&copy; 2023 Cantinho do Sabor</p>
     </footer>
 
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2>Adicionar ao Carrinho</h2>
+            <p id="modal-nome"></p>
+            <p id="modal-preco"></p>
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" min="1" value="1">
+            <br>
+            <p>Escolha o tipo de adicional:</p>
+            <select id="tipoAdicional" onchange="mostrarOpcoesAdicionais()">
+                <option value="hamburguer">Hamburguer (R$7,00 cada)</option>
+                <option value="outros">Outros Adicionais (R$4,00 cada)</option>
+            </select>
+            <div id="opcoesHamburguer" style="display: none;">
+                <label for="quantidadeHamburguer">Quantidade de Hamburgueres:</label>
+                <input type="number" id="quantidadeHamburguer" min="0" value="0">
+            </div>
+            <div id="opcoesOutros" style="display: none;">
+                <label for="nomeOutros">Nome do Adicional:</label>
+                <input type="text" id="nomeOutros">
+                <br>
+                <label for="quantidadeOutros">Quantidade:</label>
+                <input type="number" id="quantidadeOutros" min="0" value="0">
+            </div>
+            <br>
+            <button onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+
     
-
-
-<script>
-    let carrinho = [];
-
-    // Função para abrir o modal
-    function abrirModal() {
-        document.getElementById('modal').style.display = 'block';
-        atualizarPrecoTotalModal(); // Chame esta função ao abrir o modal para garantir que o preço total seja exibido corretamente
-    }
-
-    // Função para fechar o modal
-    function fecharModal() {
-        document.getElementById('modal').style.display = 'none';
-    }
-
-    // Função para mostrar/ocultar a caixa de outros adicionais
-    function mostrarOutrosAdicionais() {
-        var select = document.getElementById('adicionais');
-        var outrosAdicionais = document.getElementById('outrosAdicionais');
-
-        if (select.value === 'outros') {
-            outrosAdicionais.style.display = 'block';
-        } else {
-            outrosAdicionais.style.display = 'none';
+    <script>
+        const carrinho = [];
+    
+        function abrirModal(nome, preco, id) {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('modal-nome').innerText = nome;
+            document.getElementById('modal-preco').innerText = `Preço: R$${preco.toFixed(2)}`;
+            document.getElementById('modal-id').value = id;
         }
-
-        // Se o adicional escolhido for "Hamburguer", mostrar o campo de quantidade
-
-
-        // Atualize o preço total no modal ao mudar as opções
-        atualizarPrecoTotalModal();
-    }
-
-    // Função para adicionar ao carrinho
-    function adicionarAoCarrinho() {
-        // Obtenha os valores selecionados e adicione ao carrinho
-        const item = {
-            nome: [], // Nome do item
-            quantidade: parseFloat(document.getElementById('quantidade').value),
-            preco: parseFloat(document.getElementById('precoTotalSpan').textContent), // Preço total com base nas escolhas
-            adicionais: [], // Adicionais do item
-        };
-
-        const selectAdicionais = document.getElementById('adicionais');
-        const outrosAdicionaisInput = document.getElementById('outros');
-        const quantidadeOutrosInput = document.getElementById('quantidadeOutros');
-
-        if (selectAdicionais.value === 'nenhum') {
-            item.adicionais.push({ nome: "Nenhum Adicional", preco: 0.00 });
-        } else if (selectAdicionais.value === 'hamburguer') {
-            item.adicionais.push({ nome: "Hamburguer", preco: 7.00, quantidade: 1 }); // Sem opção de escolher quantidade
-        } else if (selectAdicionais.value === 'outros') {
-            const outrosAdicional = outrosAdicionaisInput.value.trim();
-            const quantidadeOutros = parseInt(quantidadeOutrosInput.value) || 1;
-
-            if (outrosAdicional !== '' && quantidadeOutros > 0) {
-                item.adicionais.push({ nome: outrosAdicional, preco: 7.00, quantidade: quantidadeOutros }); // Mudança para 7.00 por cada "outro adicional"
+    
+        function fecharModal() {
+            document.getElementById('modal').style.display = 'none';
+            resetarOpcoesAdicionais();
+        }
+    
+        function adicionarAoCarrinho() {
+            const id = document.getElementById('modal-id').value;
+            const nome = document.getElementById('modal-nome').innerText;
+            const preco = parseFloat(document.getElementById('modal-preco').innerText.split(' ')[1]);
+            const quantidade = parseInt(document.getElementById('quantidade').value);
+    
+            let totalAdicionais = 0;
+            const tipoAdicional = document.getElementById('tipoAdicional').value;
+    
+            if (tipoAdicional === 'hamburguer') {
+                const quantidadeHamburguer = parseInt(document.getElementById('quantidadeHamburguer').value);
+                totalAdicionais = 7.00 * quantidadeHamburguer;
+            } else if (tipoAdicional === 'outros') {
+                const nomeOutros = document.getElementById('nomeOutros').value;
+                const quantidadeOutros = parseInt(document.getElementById('quantidadeOutros').value);
+                totalAdicionais = 4.00 * quantidadeOutros;
+                // Aqui você pode salvar o nomeOutros se precisar
+            }
+    
+            const totalProduto = preco * quantidade + totalAdicionais;
+    
+            const produto = {
+                nome,
+                quantidade,
+                tipoAdicional,
+                totalProduto
+            };
+    
+            carrinho.push(produto);
+            fecharModal();
+            atualizarCarrinho();
+        }
+    
+        function mostrarOpcoesAdicionais() {
+            const tipoAdicional = document.getElementById('tipoAdicional').value;
+            const opcoesHamburguer = document.getElementById('opcoesHamburguer');
+            const opcoesOutros = document.getElementById('opcoesOutros');
+    
+            if (tipoAdicional === 'hamburguer') {
+                opcoesHamburguer.style.display = 'block';
+                opcoesOutros.style.display = 'none';
+            } else if (tipoAdicional === 'outros') {
+                opcoesHamburguer.style.display = 'none';
+                opcoesOutros.style.display = 'block';
+            } else {
+                opcoesHamburguer.style.display = 'none';
+                opcoesOutros.style.display = 'none';
             }
         }
-
-        carrinho.push(item);
-
-        // Exiba o carrinho na seção Carrinho
-        exibirCarrinho();
-
-        // Feche o modal após adicionar ao carrinho
-        fecharModal();
-    }
-
-    // Função para exibir o carrinho na seção Carrinho
-    function exibirCarrinho() {
-        const carrinhoContainer = document.getElementById('carrinho-container');
-        carrinhoContainer.innerHTML = '';
-
-        for (const item of carrinho) {
-            const itemHTML = document.createElement('div');
-            itemHTML.innerHTML = `<p>${item.nome} - Quantidade: ${item.quantidade} - Preço: R$${item.preco.toFixed(2)}</p>`;
-
-            if (item.adicionais.length > 0) {
-                const adicionaisHTML = document.createElement('ul');
-                for (const adicional of item.adicionais) {
-                    adicionaisHTML.innerHTML += `<li>${adicional.nome} - Quantidade: ${adicional.quantidade || 1} - Preço: R$${adicional.preco.toFixed(2)}</li>`;
-                }
-                itemHTML.appendChild(adicionaisHTML);
-            }
-
-            carrinhoContainer.appendChild(itemHTML);
+    
+        function resetarOpcoesAdicionais() {
+            document.getElementById('quantidadeHamburguer').value = 0;
+            document.getElementById('nomeOutros').value = '';
+            document.getElementById('quantidadeOutros').value = 0;
         }
-
-        // Adicionar o preço total no final do carrinho
-        const precoTotalCarrinho = calcularPrecoTotalCarrinho();
-        carrinhoContainer.innerHTML += `<p><strong>Total do Carrinho: R$${precoTotalCarrinho.toFixed(2)}</strong></p>`;
-    }
-
-    // Função para calcular o preço total de um item ou adicional
-    function calcularPrecoTotal(item) {
-        let precoTotal = item.preco;
-
-        if (item.quantidade) {
-            precoTotal *= item.quantidade;
+    
+        function finalizarCompra() {
+            // Implemente a lógica desejada para finalizar a compra, por exemplo, enviar as informações do carrinho para o backend
+            // Aqui está uma versão simples para exibir as informações no console
+            console.log('Itens no carrinho:', carrinho);
+            alert('Compra finalizada com sucesso! Obrigado por escolher Cantinho do Sabor.');
         }
-
-        if (item.adicionais && item.adicionais.length > 0) {
-            for (const adicional of item.adicionais) {
-                precoTotal += adicional.preco * (adicional.quantidade || 1);
+    
+        function atualizarCarrinho() {
+            const carrinhoContainer = document.getElementById('carrinho-container');
+            carrinhoContainer.innerHTML = '';
+    
+            if (carrinho.length === 0) {
+                carrinhoContainer.innerHTML = '<p>Carrinho vazio</p>';
+            } else {
+                let totalCompra = 0;
+    
+                carrinho.forEach((produto, index) => {
+                    totalCompra += produto.totalProduto;
+    
+                    carrinhoContainer.innerHTML += `
+                        <div class="item-carrinho">
+                            <p>${produto.nome} - Quantidade: ${produto.quantidade} - Adicional: ${produto.tipoAdicional}</p>
+                            <p>Total: R$${produto.totalProduto.toFixed(2)}</p>
+                        </div>
+                    `;
+                });
+    
+                carrinhoContainer.innerHTML += `<p>Total da compra: R$${totalCompra.toFixed(2)}</p>`;
             }
         }
-
-        return precoTotal.toFixed(2);
-    }
-
-    // Função para calcular o preço total do carrinho
-    function calcularPrecoTotalCarrinho() {
-        let precoTotalCarrinho = 0;
-
-        for (const item of carrinho) {
-            precoTotalCarrinho += parseFloat(calcularPrecoTotal(item));
-        }
-
-        return precoTotalCarrinho;
-    }
-
-    // Função para finalizar a compra
-    function finalizarCompra() {
-        // Lógica para enviar as informações do carrinho para o WhatsApp
-        // ...
-    }
-
-    // Função para atualizar o preço total no modal
-    function atualizarPrecoTotalModal() {
-        const precoTotalSpan = document.getElementById('precoTotalSpan');
-
-        // Obtenha os valores selecionados
-        const quantidade = parseFloat(document.getElementById('quantidade').value);
-        const selectAdicionais = document.getElementById('adicionais');
-        const quantidadeOutrosInput = document.getElementById('quantidadeOutros');
-
-        // Calcule o preço total com base nas escolhas
-        let precoTotal = 20.00 * quantidade; // Preço do item principal
-
-        if (selectAdicionais.value === 'outros') {
-            const quantidadeOutros = parseInt(quantidadeOutrosInput.value) || 1;
-            precoTotal += 7.00 * quantidadeOutros; // Custo de R$7,00 por cada "outro adicional"
-        }
-
-        precoTotalSpan.textContent = precoTotal.toFixed(2);
-    }
-</script>
-
-<!-- Seu código HTML posterior... -->
+    </script>
 
 
     
