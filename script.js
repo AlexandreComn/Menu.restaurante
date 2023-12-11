@@ -45,6 +45,8 @@ function adicionarAoCarrinho(nomeProduto, precoProduto, idModal) {
 
     fecharModal(idModal);
 
+    alert("Item adicionado ao carrinho, carrinho está no final da página."); // Adiciona o alerta aqui
+
     // Adiciona um evento ao botão de Finalizar Compra
     var finalizarCompraButton = document.getElementById("finalizar-compra-button");
     if (!finalizarCompraButton.hasAttribute("data-event-added")) {
@@ -66,15 +68,15 @@ function removerDoCarrinho(nomeProduto, precoTotal, idModal) {
 }
 
 function finalizarCompra() {
-    var mensagem = "Pedido cantinho do sabor:\n";
+    var mensagem = "Pedido Cantinho do Sabor:\n";
     for (var idModal in quantidadesNoCarrinho) {
         var quantidade = quantidadesNoCarrinho[idModal];
-        var nomeProduto = idModal.split('-')[0];
+        var nomeProduto = document.getElementById(idModal).querySelector('h3').innerText; // Obtém o nome do produto pelo ID
         mensagem += `${quantidade}x ${nomeProduto}\n`;
     }
     mensagem += `\nTotal: R$${totalCarrinho.toFixed(2)}`;
 
-    var numeroWhatsapp = '41998665850';
+    var numeroWhatsapp = '4197893785';
     var linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
     window.open(linkWhatsapp, '_blank');
 }
@@ -82,4 +84,3 @@ function finalizarCompra() {
 function fecharModal(idModal) {
     document.getElementById(idModal + "-modal").style.display = "none";
 }
- 

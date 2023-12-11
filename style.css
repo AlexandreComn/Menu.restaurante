@@ -12,14 +12,6 @@ header {
     padding: 15px;
 }
 
-.menu-item {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
-}
 
 img {
     max-width: 100%;
@@ -134,7 +126,6 @@ nav a:hover {
 }
 
 button {
-    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 10px;
@@ -178,6 +169,7 @@ footer {
 
 
 .modal {
+    font-size: 27px;
     display: none;
     position: fixed;
     top: 50%;
@@ -186,4 +178,28 @@ footer {
     padding: 20px;
     background-color: #fff;
     z-index: 1000;
+}
+
+input{
+    font-size: 20px;
+    margin: 10px;
+}
+
+#insta{
+    width: 60px;
+}
+
+#carrinho-container{
+    background-color: black;
+    color: white;
+    margin: 8px;
+}
+
+.title{
+    text-align: center;
+    background-color: #333;
+    border: 2px solid;
+    color: white;
+    padding: 10px;
+    margin: 10px 100px 10px ;
 }
