@@ -1,10 +1,9 @@
-var totalCarrinho = 0; // Variável para armazenar o total do carrinho
-var quantidadesNoCarrinho = {}; // Objeto para armazenar as quantidades de cada item no carrinho
+var totalCarrinho = 0;
+var quantidadesNoCarrinho = {};
 
 function abrirModal(nomeProduto, precoProduto, idModal, tipoProduto) {
     var modal = document.getElementById(idModal + "-modal");
 
-    // Atualiza o conteúdo do modal
     modal.innerHTML = `
         <h3>${nomeProduto}</h3>
         <p>Preço: R$${precoProduto.toFixed(2)}</p>
@@ -14,36 +13,72 @@ function abrirModal(nomeProduto, precoProduto, idModal, tipoProduto) {
         <button onclick="fecharModal('${idModal}')">Fechar</button>
     `;
 
-    // Exibe o modal
     modal.style.display = "block";
 }
 
 function adicionarAoCarrinho(nomeProduto, precoProduto, idModal) {
     var quantidade = parseInt(document.getElementById(`${idModal}-quantidade`).value);
 
-    // Adiciona a quantidade ao carrinho
     if (quantidadesNoCarrinho[idModal]) {
         quantidadesNoCarrinho[idModal] += quantidade;
     } else {
         quantidadesNoCarrinho[idModal] = quantidade;
     }
 
-    // Calcula o preço total
     var precoTotal = precoProduto * quantidade;
 
-    // Adiciona o código para adicionar ao carrinho aqui
     var carrinhoContainer = document.getElementById("carrinho-container");
-    carrinhoContainer.innerHTML += `
+
+    // Cria um novo elemento para o item do carrinho
+    var carrinhoItem = document.createElement("div");
+    carrinhoItem.id = `${idModal}-carrinho-item`;
+    carrinhoItem.innerHTML = `
         <p>${quantidade}x ${nomeProduto} - R$${precoTotal.toFixed(2)}</p>
+        <button onclick="removerDoCarrinho('${nomeProduto}', ${precoTotal}, '${idModal}')">Remover do Carrinho</button>
     `;
 
-    totalCarrinho += precoTotal; // Atualiza o total do carrinho
+    // Adiciona o novo elemento ao contêiner do carrinho
+    carrinhoContainer.insertBefore(carrinhoItem, carrinhoContainer.firstChild);
+
+    totalCarrinho += precoTotal;
     document.getElementById("total-carrinho").innerText = `Total do Carrinho: R$${totalCarrinho.toFixed(2)}`;
 
     fecharModal(idModal);
+
+    // Adiciona um evento ao botão de Finalizar Compra
+    var finalizarCompraButton = document.getElementById("finalizar-compra-button");
+    if (!finalizarCompraButton.hasAttribute("data-event-added")) {
+        finalizarCompraButton.setAttribute("data-event-added", "true");
+        finalizarCompraButton.addEventListener("click", finalizarCompra);
+    }
+}
+
+function removerDoCarrinho(nomeProduto, precoTotal, idModal) {
+    var quantidadeRemovida = quantidadesNoCarrinho[idModal];
+    totalCarrinho -= precoTotal;
+    delete quantidadesNoCarrinho[idModal];
+
+    var carrinhoContainer = document.getElementById("carrinho-container");
+    var carrinhoItem = document.getElementById(`${idModal}-carrinho-item`);
+    carrinhoContainer.removeChild(carrinhoItem);
+
+    document.getElementById("total-carrinho").innerText = `Total do Carrinho: R$${totalCarrinho.toFixed(2)}`;
+}
+
+function finalizarCompra() {
+    var mensagem = "Pedido cantinho do sabor:\n";
+    for (var idModal in quantidadesNoCarrinho) {
+        var quantidade = quantidadesNoCarrinho[idModal];
+        var nomeProduto = idModal.split('-')[0];
+        mensagem += `${quantidade}x ${nomeProduto}\n`;
+    }
+    mensagem += `\nTotal: R$${totalCarrinho.toFixed(2)}`;
+
+    var numeroWhatsapp = '41998665850';
+    var linkWhatsapp = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensagem)}`;
+    window.open(linkWhatsapp, '_blank');
 }
 
 function fecharModal(idModal) {
-    // Fecha o modal
     document.getElementById(idModal + "-modal").style.display = "none";
 }
