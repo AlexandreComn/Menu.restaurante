@@ -82,3 +82,4 @@ function finalizarCompra() {
 function fecharModal(idModal) {
     document.getElementById(idModal + "-modal").style.display = "none";
 }
+ 
